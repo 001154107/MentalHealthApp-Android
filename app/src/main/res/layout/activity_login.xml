@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sign Up"
+        android:text="Sign In"
         android:textColor="@color/black"
         android:textSize="50dp"
         android:textStyle="bold"
@@ -43,49 +43,18 @@
         android:paddingLeft="20dp"
 
         ></EditText>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:id="@+id/confirmpw"
-        android:hint="Confirm Password"
-        android:textSize="25dp"
-        android:textColorHint="@color/black"
-        android:background="@drawable/edittext_background"
-        android:layout_marginBottom="30dp"
-        android:paddingLeft="20dp"
 
-        ></EditText>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:id="@+id/email"
-        android:hint="Email"
-        android:textSize="25dp"
-        android:textColorHint="@color/black"
-        android:background="@drawable/edittext_background"
-        android:layout_marginBottom="30dp"
-        android:paddingLeft="20dp"
-
-        ></EditText>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/signup"
-        android:text="REGISTER"
+        android:id="@+id/login"
+        android:text="Sign In"
         android:textSize="20dp"
         android:backgroundTint="@color/black"
         android:layout_marginBottom="30dp"></Button>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/signin"
-        android:text="Already have an account"
-        android:textSize="15dp"
-        android:backgroundTint="#F3E0A8"
-        android:textColor="@color/black"
-        android:layout_marginBottom="30dp"></Button>
+
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>
