@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="Sign Up"
         android:textColor="@color/black"
-        android:textSize="50dp"
+        android:textSize="40sp"
         android:textStyle="bold"
         android:gravity="center_horizontal"
         android:layout_marginTop="40dp"
@@ -23,10 +23,10 @@
         android:layout_height="50dp"
         android:id="@+id/username"
         android:hint="User Name"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:textColorHint="@color/black"
         android:background="@drawable/edittext_background"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="20dp"
         android:paddingLeft="20dp"
 
         ></EditText>
@@ -39,7 +39,7 @@
         android:textSize="25dp"
         android:textColorHint="@color/black"
         android:background="@drawable/edittext_background"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="20dp"
         android:paddingLeft="20dp"
 
         ></EditText>
@@ -48,10 +48,10 @@
         android:layout_height="50dp"
         android:id="@+id/confirmpw"
         android:hint="Confirm Password"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:textColorHint="@color/black"
         android:background="@drawable/edittext_background"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="20dp"
         android:paddingLeft="20dp"
 
         ></EditText>
@@ -60,10 +60,10 @@
         android:layout_height="50dp"
         android:id="@+id/email"
         android:hint="Email"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:textColorHint="@color/black"
         android:background="@drawable/edittext_background"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="20dp"
         android:paddingLeft="20dp"
 
         ></EditText>
@@ -73,19 +73,19 @@
         android:layout_height="wrap_content"
         android:id="@+id/signup"
         android:text="REGISTER"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:backgroundTint="@color/black"
-        android:layout_marginBottom="30dp"></Button>
+        android:layout_marginBottom="20dp"></Button>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/signin"
         android:text="Already have an account"
-        android:textSize="15dp"
+        android:textSize="15sp"
         android:backgroundTint="#F3E0A8"
         android:textColor="@color/black"
-        android:layout_marginBottom="30dp"></Button>
+        android:layout_marginBottom="20dp"></Button>
 
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+</LinearLayout>

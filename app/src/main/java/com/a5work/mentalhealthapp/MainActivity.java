@@ -9,11 +9,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.a5work.mentalhealthapp.Models.User;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText username, password, repassword, email;
     Button signin, signup;
     DBHelper DB;
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
                 String repassTxt = repassword.getText().toString();
                 String emailTxt = email.getText().toString();
 
+                user =  new User(usernameTxt, passwordTxt, emailTxt);
+
                 if(usernameTxt.equals("") || passwordTxt.equals("") || repassTxt.equals("") || emailTxt.equals("") ){
                     Toast.makeText(MainActivity.this, "Please enter all the fields", Toast.LENGTH_LONG).show();
                 }else{
@@ -47,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                         Boolean checkuser = DB.checkUsername(usernameTxt);
                         //check username existed or not
                         if(checkuser == false){
-                            Boolean insertData = DB.insertData(usernameTxt, passwordTxt, emailTxt);
+                            Boolean insertData = DB.insertData(user);
                             //insert data into DB
                             if(insertData == true){
                                 Toast.makeText(MainActivity.this, "Registered successfully", Toast.LENGTH_LONG).show();

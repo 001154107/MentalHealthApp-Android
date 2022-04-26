@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.a5work.mentalhealthapp.Models.User;
+
 public class DBHelper extends SQLiteOpenHelper {
 
     public static final String DBName = "Login.db";
@@ -28,12 +30,12 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     //insert Data
-    public Boolean insertData(String username, String password, String email){
+    public Boolean insertData(User user){
         SQLiteDatabase MyDB = this.getReadableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("username", username);
-        contentValues.put("password", password);
-        contentValues.put("email", email);
+        contentValues.put("username", user.getUsename());
+        contentValues.put("password", user.getPassword());
+        contentValues.put("email", user.getEmail());
         long result = MyDB.insert("users", null, contentValues);
         if(result == -1){
             return false;
