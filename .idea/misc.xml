@@ -3,7 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/5JAM/MentalHealthApp-Android/app/src/main/res/layout/activity_read_journal.xml" value="0.3625" />
+        <entry key="..\:/5JAM/MentalHealthApp-Android/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/5JAM/MentalHealthApp-Android/app/src/main/res/layout/activity_read_journal.xml" value="0.33" />
       </map>
     </option>
   </component>
