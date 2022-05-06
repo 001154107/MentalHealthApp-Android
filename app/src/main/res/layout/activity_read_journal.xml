@@ -11,19 +11,36 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="16sp">
+
+        <!-- Page Title -->
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/ReadJournalTitle"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="right">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Today's Date:"/>
+
+         <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/DatePlaceholder"/>
+    </LinearLayout>
 </LinearLayout>
 
-
+        <!-- Page Title -->
         <com.jjoe64.graphview.GraphView
             android:id="@+id/graph"
             android:layout_width="match_parent"
@@ -43,23 +60,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="Last Month"
-                android:padding="5sp"
-                app:icon="?attr/actionModeCloseDrawable" />
+                android:background="@color/clear"
+                android:text="@string/left"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/grey"/>
 
             <TextView
-                android:id="@+id/month_title"
+                android:id="@+id/EntryDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5sp"
-                android:text="@string/SelectedMonth" />
+                android:text="@string/DatePlaceholder" />
 
             <Button
                 android:id="@+id/month_navigation_next"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@color/clear"
                 android:contentDescription="Next Month"
-                android:padding="5sp"
-                app:icon="@android:drawable/ic_media_play" />
+                android:text="@string/right"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/grey"/>
         </LinearLayout>
 
         <ScrollView
@@ -69,9 +90,10 @@
             android:scrollbarStyle="insideOverlay">
 
             <TextView
+                android:id="@+id/JournalText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/JournalEntryText" />
+                android:text="@string/PlaceHolderText" />
         </ScrollView>
 
 
