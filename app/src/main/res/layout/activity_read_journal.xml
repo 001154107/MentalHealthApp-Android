@@ -10,7 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="16sp">
+        android:padding="16sp"
+        >
+
 
         <!-- Page Title -->
 <LinearLayout
@@ -61,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:contentDescription="Last Month"
                 android:background="@color/clear"
-                android:text="@string/left"
+                android:text="prev"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="@color/grey"/>
 
@@ -78,10 +80,23 @@
                 android:layout_height="wrap_content"
                 android:background="@color/clear"
                 android:contentDescription="Next Month"
-                android:text="@string/right"
+                android:text="next"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="@color/grey"/>
         </LinearLayout>
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:contentDescription="Write Journal Entry"
+            android:clickable="true"
+            app:srcCompat="@android:drawable/ic_menu_edit"
+            android:layout_gravity="right"
+            android:layout_marginTop="180dp"/>
 
         <ScrollView
             android:layout_width="match_parent"
@@ -92,9 +107,10 @@
             <TextView
                 android:id="@+id/JournalText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="@string/PlaceHolderText" />
         </ScrollView>
+</FrameLayout>
 
 
     </LinearLayout>

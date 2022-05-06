@@ -1,9 +1,13 @@
 package com.a5work.mentalhealthapp;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
@@ -23,5 +27,16 @@ public class ReadJournal extends AppCompatActivity {
                 new DataPoint(4, 6)
         });
         graph.addSeries(series);
+
+
+        FloatingActionButton read_WriteJournalfltbtn = findViewById(R.id.floatingActionButton);
+        read_WriteJournalfltbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent WriteJournalIntent = new Intent(ReadJournal.this,MainActivity.class);
+                startActivity(WriteJournalIntent);
+            }
+        });
+
     }
 }
