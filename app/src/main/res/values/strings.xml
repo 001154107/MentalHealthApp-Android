@@ -3,4 +3,14 @@
     <string name="SelectedMonth">Month</string>
     <string name="ReadJournalTitle">Read Your Journal</string>
     <string name="JournalEntryText">Place Holder Text...</string>
+
+    <string name="Date">Date</string>
+    <string name="WriteJournalTitle">Add Journal Here</string>
+    <string name="EmotionalTitle">Emotionally</string>
+    <string name="PhysicalTitle">Physically</string>
+    <string name="ReasonTitle">Reason why I choose this rating</string>
+    <string name="BarTitle">Rating Bar</string>
+    <string name="RBarTitle">Rating Bar 1</string>
+    <string name="ReasonEntryText">Place Holder Text...</string>
+    <string name="SubmitTitle">Submit</string>
 </resources>
