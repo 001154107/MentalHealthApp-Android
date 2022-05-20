@@ -57,15 +57,13 @@
             android:padding="5sp"
             android:paddingBottom="10sp">
 
-            <Button
+            <ImageButton
                 android:id="@+id/month_navigation_previous"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:contentDescription="Last Month"
                 android:background="@color/clear"
-                android:text="prev"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@color/grey"/>
+                app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24"
+                android:contentDescription="Previous entry" />
 
             <TextView
                 android:id="@+id/EntryDate"
@@ -74,15 +72,16 @@
                 android:padding="5sp"
                 android:text="@string/DatePlaceholder" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/month_navigation_next"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="Next Entry"
                 android:background="@color/clear"
-                android:contentDescription="Next Month"
-                android:text="next"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@color/grey"/>
+                app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
+
+
+
         </LinearLayout>
 <FrameLayout
     android:layout_width="match_parent"
