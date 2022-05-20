@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="ReadJournalTitle">Read Your Journal</string>
+    <string name="WriteJournalTitle">Add Your Journal Here</string>
 </resources>
