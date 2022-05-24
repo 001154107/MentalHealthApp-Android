@@ -103,6 +103,8 @@ public class JournalClass implements Serializable {
     // Functions
     public boolean SaveToFile(){ // #TODO
 
+
+
      return saved;
     }
 }
