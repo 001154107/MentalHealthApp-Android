@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+// THIS IS A STAND IN FOR THE WRITE JOURNAL PAGE!
+
 public class JounalPage extends AppCompatActivity {
 
     @Override
