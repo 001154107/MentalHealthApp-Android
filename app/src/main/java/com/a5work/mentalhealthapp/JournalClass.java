@@ -132,7 +132,7 @@ public class JournalClass implements Serializable {
         catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return createResumeForm;
+        return journalWriter;
     }
 
 }
