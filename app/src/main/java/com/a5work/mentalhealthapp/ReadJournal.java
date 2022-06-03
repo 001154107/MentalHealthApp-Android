@@ -15,7 +15,7 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 public class ReadJournal extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) { // TODO - Make Read from file
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_read_journal);
         GraphView graph = findViewById(R.id.graph);

@@ -2,32 +2,34 @@ package com.a5work.mentalhealthapp.Models;
 
 import android.content.Context;
 
-import java.io.FileInputStream;
+import androidx.annotation.NonNull;
+
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.Calendar;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class JournalClass implements Serializable {
     private int id; // used in storage
     private int mentalRating;
     private int physicalRating;
-    private Calendar date;
+    private LocalDateTime date;
     private String reason;
     private boolean saved; // is set to true when saved into file
     private String text;
+    public String fileName;
 
-    public JournalClass(int mentalRating, int physicalRating, Calendar date, String reason, boolean saved) {
+
+    public JournalClass(int mentalRating, int physicalRating, LocalDateTime date, String reason) {
         this.id = this.hashCode();
         this.mentalRating = mentalRating;
         this.physicalRating = physicalRating;
         this.date = date;
         this.reason = reason;
-        this.saved = saved;
+        this.fileName = nameFile();
+        // this.saved = saved;
 
     }
 
@@ -55,11 +57,11 @@ public class JournalClass implements Serializable {
         this.physicalRating = physicalRating;
     }
 
-    public Calendar getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Calendar date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
@@ -107,16 +109,15 @@ public class JournalClass implements Serializable {
     }
 
     public String nameFile() { // Creates a unique file name for each instance.
-        return "Journal_" + this.getId() + this.getDate() + ".ser";
+      //  String dateStr = String.valueOf(this.getDate());
+        return "Journal_" +  getDate().toString() + "_"+ this.getId() + ".gson";
     }
 
 
-
     // Constant with a file name
-    public String fileName = this.nameFile();
 
     // Serializes an object and saves it to a file
-    public boolean SaveToFile(Context context){ //
+    public boolean SaveToFile(@NonNull Context context){ //
         try {
             FileOutputStream fileOutputStream = context.openFileOutput(fileName, Context.MODE_PRIVATE);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
@@ -127,10 +128,8 @@ public class JournalClass implements Serializable {
             e.printStackTrace();
             return false;
         }
+        this.setSaved(true);
         return true;
     }
-
-
-
 }
 
