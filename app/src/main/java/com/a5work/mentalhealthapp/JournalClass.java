@@ -1,9 +1,8 @@
 package com.a5work.mentalhealthapp;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-
 import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Objects;
@@ -15,6 +14,7 @@ public class JournalClass implements Serializable {
     private Calendar date;
     private String reason;
     private boolean saved; // is set to true when saved into file
+    private String text;
 
     public JournalClass(int mentalRating, int physicalRating, Calendar date, String reason, boolean saved) {
         this.id = this.hashCode();
@@ -99,13 +99,41 @@ public class JournalClass implements Serializable {
                 ", reason='" + reason + '\'' +
                 '}';
     }
-    
-    // Functions
-    public boolean SaveToFile(){ // #TODO
 
 
+    // Constant with a file name
+    public static String fileName = "journal.ser";
 
-     return saved;
+    // Serializes an object and saves it to a file
+    public boolean SaveToFile(Context context){ //
+        try {
+            FileOutputStream fileOutputStream = context.openFileOutput(fileName, Context.MODE_PRIVATE);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(this);
+            objectOutputStream.close();
+            fileOutputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+    // Creates an object by reading it from a file
+    public static JournalWriter readFromFile(Context context) {
+        JournalWriter journalWriter = null;
+        try {
+            FileInputStream fileInputStream = context.openFileInput(fileName);
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+            journalWriter = (JournalWriter) objectInputStream.readObject();
+            objectInputStream.close();
+            fileInputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return journalWriter;
+    }
+
 }
 
