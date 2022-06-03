@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
                     boolean checkuserpass = DB.checkUserNamePassword(usernameTxt, passwordTxt);
                     if(checkuserpass == true){
                         Toast.makeText(LoginActivity.this, "Sign in successfully", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(getApplicationContext(), JounalPage.class);
+                        Intent intent = new Intent(getApplicationContext(), WriteJournal.class);
                         startActivity(intent);
                     }else{
                         Toast.makeText(LoginActivity.this, "Invalid data", Toast.LENGTH_LONG).show();
@@ -53,6 +53,13 @@ public class LoginActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Login");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Intent intent = new Intent(getApplicationContext(), WriteJournal.class);
+        startActivity(intent);
     }
 
     @Override

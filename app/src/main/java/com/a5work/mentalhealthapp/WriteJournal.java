@@ -37,7 +37,7 @@ public class WriteJournal extends AppCompatActivity {
             date = findViewById(R.id.DatePicker1);
             date.setInputType(InputType.TYPE_NULL);
             reason = findViewById(R.id.Reason);
-            reason.setInputType(InputType.TYPE_NULL);
+            reason.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
             date.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick (View v) {

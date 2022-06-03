@@ -19,9 +19,24 @@ public class MainActivity extends AppCompatActivity {
     User user;
 
     @Override
+    protected void onRestart() {
+        super.onRestart();
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
        username = (EditText) findViewById(R.id.username);
        password = (EditText) findViewById(R.id.password);
@@ -57,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                             if(insertData == true){
                                 Toast.makeText(MainActivity.this, "Registered successfully", Toast.LENGTH_LONG).show();
                                 //move to jounal page
-                                Intent intent = new Intent(getApplicationContext(), JounalPage.class);
+                                Intent intent = new Intent(getApplicationContext(), WriteJournal.class);
                                 startActivity(intent);
                             }
                         }else{
@@ -73,7 +88,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        //signin btb
+
+        //signin btn
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

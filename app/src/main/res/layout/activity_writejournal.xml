@@ -94,11 +94,18 @@
         </LinearLayout>
 
         <EditText
+            android:id="@+id/Reason"
+            android:freezesText="false"
+            android:lines="20"
             android:layout_width="match_parent"
             android:layout_height="250dp"
+            android:imeOptions="actionNone"
+            android:maxLength="100"
+            android:nextFocusDown="@null"
+            android:ellipsize="end"
+            android:selectAllOnFocus="true"
             android:autofillHints="no"
-            android:inputType="text"
-            android:id="@+id/Reason" />
+            android:inputType="text" />
 
         <Button
         android:id="@+id/submitButton"

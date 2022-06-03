@@ -1,8 +1,13 @@
-package com.a5work.mentalhealthapp;
+package com.a5work.mentalhealthapp.Models;
 
-import java.io.File;
+import android.content.Context;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
-import java.io.PrintWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Objects;
@@ -23,6 +28,7 @@ public class JournalClass implements Serializable {
         this.date = date;
         this.reason = reason;
         this.saved = saved;
+
     }
 
     public int getId() {
@@ -100,9 +106,14 @@ public class JournalClass implements Serializable {
                 '}';
     }
 
+    public String nameFile() { // Creates a unique file name for each instance.
+        return "Journal_" + this.getId() + this.getDate() + ".ser";
+    }
+
+
 
     // Constant with a file name
-    public static String fileName = "journal.ser";
+    public String fileName = this.nameFile();
 
     // Serializes an object and saves it to a file
     public boolean SaveToFile(Context context){ //
@@ -114,26 +125,12 @@ public class JournalClass implements Serializable {
             fileOutputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
+            return false;
         }
+        return true;
     }
 
-    // Creates an object by reading it from a file
-    public static JournalWriter readFromFile(Context context) {
-        JournalWriter journalWriter = null;
-        try {
-            FileInputStream fileInputStream = context.openFileInput(fileName);
-            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-            journalWriter = (JournalWriter) objectInputStream.readObject();
-            objectInputStream.close();
-            fileInputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        return journalWriter;
-    }
+
 
 }
 

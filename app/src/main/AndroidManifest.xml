@@ -13,11 +13,11 @@
             android:name=".ReadJournal"
             android:exported="false" />
         <activity
-            android:name=".JounalPage"
-            android:exported="false" />
-        <activity
             android:name=".LoginActivity"
             android:exported="false" />
+        <activity
+            android:name=".WriteJournal"
+            android:exported="false"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">
