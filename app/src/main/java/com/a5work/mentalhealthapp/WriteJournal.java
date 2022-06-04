@@ -54,7 +54,7 @@ public class WriteJournal extends AppCompatActivity {
             //Performing action on Button Click
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
-            public void onClick(View v) { // TODO - Make class and store file
+            public void onClick(View v) { // Make class and store file
                 try {
                     int MentalRate = MentalRatingBar.getNumStars();
                     int PhysicRate = PhysicalRatingBar.getNumStars();
@@ -64,7 +64,6 @@ public class WriteJournal extends AppCompatActivity {
 
                     if (entry.SaveToFile(getBaseContext())) {
                         Toast.makeText(getBaseContext(), "Entry Saved!", Toast.LENGTH_LONG).show();
-
                         Intent intent = new Intent(getApplicationContext(), ReadJournal.class);
                         startActivity(intent);
 

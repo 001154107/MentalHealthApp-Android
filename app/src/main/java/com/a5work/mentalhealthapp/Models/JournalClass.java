@@ -4,11 +4,15 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 
+import com.google.gson.Gson;
+
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Objects;
 
 public class JournalClass implements Serializable {
@@ -110,7 +114,7 @@ public class JournalClass implements Serializable {
 
     public String nameFile() { // Creates a unique file name for each instance.
       //  String dateStr = String.valueOf(this.getDate());
-        return "Journal_" +  getDate().toString() + "_"+ this.getId() + ".gson";
+        return "Journal_" +  getDate().toString() +".gson";
     }
 
 
@@ -131,5 +135,7 @@ public class JournalClass implements Serializable {
         this.setSaved(true);
         return true;
     }
+
+
 }
 
