@@ -1,8 +1,10 @@
 package com.a5work.mentalhealthapp.Models;
 
 import android.content.Context;
+import android.os.Build;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 
 import com.google.gson.Gson;
 
@@ -12,13 +14,14 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Objects;
 
 public class JournalClass implements Serializable {
     private int id; // used in storage
-    private int mentalRating;
-    private int physicalRating;
+    private float mentalRating;
+    private float physicalRating;
     private LocalDateTime date;
     private String reason;
     private boolean saved; // is set to true when saved into file
@@ -26,7 +29,8 @@ public class JournalClass implements Serializable {
     public String fileName;
 
 
-    public JournalClass(int mentalRating, int physicalRating, LocalDateTime date, String reason) {
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public JournalClass(float mentalRating, float physicalRating, LocalDateTime date, String reason) {
         this.id = this.hashCode();
         this.mentalRating = mentalRating;
         this.physicalRating = physicalRating;
@@ -45,19 +49,19 @@ public class JournalClass implements Serializable {
         this.id = id;
     }
 
-    public int getMentalRating() {
+    public float getMentalRating() {
         return mentalRating;
     }
 
-    public void setMentalRating(int mentalRating) {
+    public void setMentalRating(float mentalRating) {
         this.mentalRating = mentalRating;
     }
 
-    public int getPhysicalRating() {
+    public float getPhysicalRating() {
         return physicalRating;
     }
 
-    public void setPhysicalRating(int physicalRating) {
+    public void setPhysicalRating(float physicalRating) {
         this.physicalRating = physicalRating;
     }
 
@@ -112,9 +116,11 @@ public class JournalClass implements Serializable {
                 '}';
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public String nameFile() { // Creates a unique file name for each instance.
       //  String dateStr = String.valueOf(this.getDate());
-        return "Journal_" +  getDate().toString() +".gson";
+        String formattedDate = getDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy-hh-mm-ss"));
+        return "Journal_" +  formattedDate +".gson";
     }
 
 

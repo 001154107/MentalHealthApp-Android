@@ -56,8 +56,8 @@ public class WriteJournal extends AppCompatActivity {
             @Override
             public void onClick(View v) { // Make class and store file
                 try {
-                    int MentalRate = MentalRatingBar.getNumStars();
-                    int PhysicRate = PhysicalRatingBar.getNumStars();
+                    float MentalRate = MentalRatingBar.getRating();
+                    float PhysicRate = PhysicalRatingBar.getRating();
                     String reasonTxt = String.valueOf(reason.getText());
 
                     JournalClass entry = new JournalClass(MentalRate, PhysicRate, LocalDateTime.now(), reasonTxt);
