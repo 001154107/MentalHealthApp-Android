@@ -80,11 +80,12 @@ public class ReadJournal extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
-                    selEntry = selEntry - 1;
+                    selEntry++;
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                         readDateAndReason(selEntry, entrieslinkedList);
                     }
                 } catch (Exception e){
+                    selEntry = entrieslinkedList.size();
                     Toast.makeText(getBaseContext(),"No more entries",Toast.LENGTH_LONG).show();
                 }
 
@@ -96,11 +97,14 @@ public class ReadJournal extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
-                    selEntry++;
+
+                    selEntry = selEntry - 1;
+
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                         readDateAndReason(selEntry, entrieslinkedList);
                     }
                 } catch (Exception e){
+                    selEntry = 0;
                     Toast.makeText(getBaseContext(),"No more entries",Toast.LENGTH_LONG).show();
                 }
 

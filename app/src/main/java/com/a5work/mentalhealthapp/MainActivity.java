@@ -25,12 +25,16 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /*
+
     @Override
     protected void onResume() {
         super.onResume();
         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(intent);
     }
+
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
