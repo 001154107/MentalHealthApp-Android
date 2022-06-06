@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WriteJournal">
+    tools:context=".WriteJournal"
+    tools:ignore="MissingDefaultResource">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -26,6 +27,7 @@
         </LinearLayout>
 
         <EditText
+
             android:id="@+id/DatePicker1"
             android:layout_width="match_parent"
             android:layout_height="83dp"
@@ -93,11 +95,15 @@
         </LinearLayout>
 
         <EditText
+
+            android:id="@+id/Reason"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:autofillHints="no"
-            android:inputType="text"
-            android:id="@+id/Reason" />
+            android:gravity="top|left"
+            android:ems="10"
+            android:lines="8"
+            android:inputType="textMultiLine"
+          />
 
         <Button
         android:id="@+id/submitButton"

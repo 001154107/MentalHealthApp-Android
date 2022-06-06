@@ -12,6 +12,7 @@
         android:orientation="vertical"
         android:padding="16sp">
 
+
         <!-- Page Title -->
 <LinearLayout
     android:layout_width="match_parent"
@@ -22,6 +23,7 @@
         android:layout_height="wrap_content"
         android:text="@string/ReadJournalTitle"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -29,14 +31,18 @@
         android:gravity="right">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="80sp"
             android:layout_height="wrap_content"
-            android:text="Today's Date:"/>
+            android:text="@string/EmotionalTitle"
+            android:background="@color/pink"/>
 
-         <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/DatePlaceholder"/>
+
+        <TextView
+            android:layout_width="80sp"
+            android:layout_height="wrap_content"
+            android:text="@string/PhysicalTitle"
+            android:background="@color/blue"/>
+
     </LinearLayout>
 </LinearLayout>
 
@@ -44,44 +50,27 @@
         <com.jjoe64.graphview.GraphView
             android:id="@+id/graph"
             android:layout_width="match_parent"
-            android:layout_height="335dp" />
+            android:layout_height="250dp"
+            android:tooltipText=""/>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
+
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal"
-            android:padding="5sp"
-            android:paddingBottom="10sp">
-
-            <Button
-                android:id="@+id/month_navigation_previous"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="Last Month"
-                android:background="@color/clear"
-                android:text="@string/left"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@color/grey"/>
-
-            <TextView
-                android:id="@+id/EntryDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5sp"
-                android:text="@string/DatePlaceholder" />
-
-            <Button
-                android:id="@+id/month_navigation_next"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/clear"
-                android:contentDescription="Next Month"
-                android:text="@string/right"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@color/grey"/>
-        </LinearLayout>
+            android:layout_width="wrap_content"
+            android:contentDescription="Write Journal Entry"
+            android:clickable="true"
+            app:srcCompat="@android:drawable/ic_menu_edit"
+            android:layout_gravity="right"
+            android:layout_marginTop="270dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -93,8 +82,47 @@
                 android:id="@+id/JournalText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
                 android:text="@string/PlaceHolderText" />
         </ScrollView>
+
+</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:padding="5sp"
+            android:paddingBottom="10sp">
+
+            <ImageButton
+                android:id="@+id/month_navigation_previous"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="50sp"
+                android:background="@color/clear"
+                app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24"
+                android:contentDescription="Previous entry" />
+
+            <TextView
+                android:id="@+id/EntryDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5sp"
+                android:text="@string/DatePlaceholder" />
+
+            <ImageButton
+                android:id="@+id/month_navigation_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="50sp"
+                android:contentDescription="Next Entry"
+                android:background="@color/clear"
+                app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
+
+
+
+        </LinearLayout>
 
 
     </LinearLayout>

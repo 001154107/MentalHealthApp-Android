@@ -1,12 +1,11 @@
 <resources>
     <string name="app_name">MentalHealthApp</string>
-    <string name="PlaceHolderText">Place Holder Text...</string>
-    <string name="DatePlaceholder">00/00/0000</string>
+    <string name="ReadJournalTitle">Read \nYour Journal</string>
+    <string name="PlaceHolderText">This entry has no Text</string>
+    <string name="DatePlaceholder">00-00-0000 00:00 XX</string>
     <string name="left">left</string>
     <string name="right">right</string>
-    <string name="SelectedMonth">Month</string>
-    <string name="ReadJournalTitle">Read Your Journal</string>
-    <string name="JournalEntryText">Place Holder Text...</string>
+
 
     <string name="Date">Date</string>
     <string name="WriteJournalTitle">Add Journal Here</string>
