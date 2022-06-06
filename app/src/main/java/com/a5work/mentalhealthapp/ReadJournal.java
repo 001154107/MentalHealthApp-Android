@@ -1,16 +1,12 @@
 package com.a5work.mentalhealthapp;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.Paint;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,16 +22,15 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileInputStream;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.LinkedList;
 
 public class ReadJournal extends AppCompatActivity {
+
+    private int selEntry = 0;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -45,21 +40,10 @@ public class ReadJournal extends AppCompatActivity {
 
         ImageButton prevEntry = findViewById(R.id.month_navigation_previous);
         ImageButton nextEntry = findViewById(R.id.month_navigation_next);
-        TextView entryDate = findViewById(R.id.EntryDate);
-        TextView reason = findViewById(R.id.JournalText);
         GraphView graph = findViewById(R.id.graph);
 
 
 
-
-        FloatingActionButton read_WriteJournalfltbtn = findViewById(R.id.floatingActionButton);
-        read_WriteJournalfltbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent WriteJournalIntent = new Intent(ReadJournal.this,MainActivity.class);
-                startActivity(WriteJournalIntent);
-            }
-        });
 
         LinkedList<JournalClass> entrieslinkedList = new LinkedList<JournalClass>();
         for (File i : getFilesInOrder()) {
@@ -85,21 +69,63 @@ public class ReadJournal extends AppCompatActivity {
         LineGraphSeries<DataPoint> physicalRating = new LineGraphSeries<>(physicalDataPoints);
         graph.addSeries(physicalRating);
         graph.addSeries(emotionalRating);
-        //emotionalRating.setTitle("Emotional Ratings");
         emotionalRating.setColor(0xffce93d8);
-        //physicalRating.setTitle("Physical Ratings");
         physicalRating.setColor(0xff81d4fa);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            readDateAndReason(0,entryDate, reason, entrieslinkedList);
+            readDateAndReason(selEntry, entrieslinkedList);
         }
+
+        prevEntry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    selEntry = selEntry - 1;
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        readDateAndReason(selEntry, entrieslinkedList);
+                    }
+                } catch (Exception e){
+                    Toast.makeText(getBaseContext(),"No more entries",Toast.LENGTH_LONG).show();
+                }
+
+
+            }
+        });
+
+        nextEntry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    selEntry++;
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        readDateAndReason(selEntry, entrieslinkedList);
+                    }
+                } catch (Exception e){
+                    Toast.makeText(getBaseContext(),"No more entries",Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });
+
+
+
+
+        FloatingActionButton read_WriteJournalfltbtn = findViewById(R.id.floatingActionButton);
+        read_WriteJournalfltbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent WriteJournalIntent = new Intent(ReadJournal.this,MainActivity.class);
+                startActivity(WriteJournalIntent);
+            }
+        });
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    private void readDateAndReason(int i, TextView entryDate, TextView reason, LinkedList<JournalClass> entrieslinkedList) {
+    private void readDateAndReason(int i, LinkedList<JournalClass> entrieslinkedList) {
         // REASON and DATE
         String formattedDate = entrieslinkedList.get(i).getDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a"));
-
+        TextView entryDate = findViewById(R.id.EntryDate);
+        TextView reason = findViewById(R.id.JournalText);
         reason.setText(entrieslinkedList.get(i).getReason());
         entryDate.setText(formattedDate);
     }
