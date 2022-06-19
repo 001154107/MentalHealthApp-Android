@@ -54,6 +54,39 @@
             android:tooltipText=""/>
 
 
+
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:contentDescription="Write Journal Entry"
+            android:clickable="true"
+            app:srcCompat="@android:drawable/ic_menu_edit"
+            android:layout_gravity="right"
+            android:layout_marginTop="270dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="50sp"
+            android:scrollbarStyle="insideOverlay">
+
+            <TextView
+                android:id="@+id/JournalText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:text="@string/PlaceHolderText" />
+        </ScrollView>
+
+</FrameLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -90,34 +123,6 @@
 
 
         </LinearLayout>
-<FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="fill_parent">
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:contentDescription="Write Journal Entry"
-            android:clickable="true"
-            app:srcCompat="@android:drawable/ic_menu_edit"
-            android:layout_gravity="right"
-            android:layout_marginTop="180dp"/>
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingBottom="50sp"
-            android:scrollbarStyle="insideOverlay">
-
-            <TextView
-                android:id="@+id/JournalText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textMultiLine"
-                android:text="@string/PlaceHolderText" />
-        </ScrollView>
-</FrameLayout>
 
 
     </LinearLayout>

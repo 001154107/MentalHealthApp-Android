@@ -54,13 +54,15 @@ public class LoginActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
     }
-
+/*
     @Override
     protected void onResume() {
         super.onResume();
         Intent intent = new Intent(getApplicationContext(), WriteJournal.class);
         startActivity(intent);
     }
+
+ */
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
