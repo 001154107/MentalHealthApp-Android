@@ -3,7 +3,6 @@ package com.a5work.mentalhealthapp;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,10 +30,11 @@ import java.util.LinkedList;
 public class ReadJournal extends AppCompatActivity {
 
     private int selEntry = 0;
+    private final String Path = "/data/data/com.a5work.mentalhealthapp/files/";
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
-    protected void onCreate(Bundle savedInstanceState) { // TODO - Make Read from file
+    protected void onCreate(Bundle savedInstanceState) { // Read from file
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_read_journal);
 
@@ -45,7 +45,7 @@ public class ReadJournal extends AppCompatActivity {
 
 
 
-        LinkedList<JournalClass> entrieslinkedList = new LinkedList<JournalClass>();
+        LinkedList<JournalClass> entrieslinkedList = new LinkedList<>();
         for (File i : getFilesInOrder()) {
             try {
                 entrieslinkedList.add(readObjectFromFile(i));
@@ -76,47 +76,38 @@ public class ReadJournal extends AppCompatActivity {
             readDateAndReason(selEntry, entrieslinkedList);
         }
 
-        prevEntry.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try {
-                    selEntry = selEntry - 1;
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        readDateAndReason(selEntry, entrieslinkedList);
-                    }
-                } catch (Exception e){
-                    Toast.makeText(getBaseContext(),"No more entries",Toast.LENGTH_LONG).show();
+        prevEntry.setOnClickListener(view -> {
+            try {
+                selEntry = selEntry - 1;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    readDateAndReason(selEntry, entrieslinkedList);
                 }
-
-
+            } catch (Exception e){
+                Toast.makeText(getBaseContext(),"No more entries",Toast.LENGTH_LONG).show();
             }
+
+
         });
 
-        nextEntry.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try {
-                    selEntry++;
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        readDateAndReason(selEntry, entrieslinkedList);
-                    }
-                } catch (Exception e){
-                    Toast.makeText(getBaseContext(),"No more entries",Toast.LENGTH_LONG).show();
+        nextEntry.setOnClickListener(view -> {
+            try {
+                selEntry++;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    readDateAndReason(selEntry, entrieslinkedList);
                 }
-
+            } catch (Exception e){
+                Toast.makeText(getBaseContext(),"No more entries",Toast.LENGTH_LONG).show();
             }
+
         });
 
 
 
 
         FloatingActionButton read_WriteJournalfltbtn = findViewById(R.id.floatingActionButton);
-        read_WriteJournalfltbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent WriteJournalIntent = new Intent(ReadJournal.this,MainActivity.class);
-                startActivity(WriteJournalIntent);
-            }
+        read_WriteJournalfltbtn.setOnClickListener(view -> {
+            Intent WriteJournalIntent = new Intent(ReadJournal.this,MainActivity.class);
+            startActivity(WriteJournalIntent);
         });
     }
 
@@ -133,22 +124,23 @@ public class ReadJournal extends AppCompatActivity {
 
     // Get object from a file.
     public JournalClass readObjectFromFile(File file) throws IOException, ClassNotFoundException {
-        Object result = null;
+        Object result;
         try (FileInputStream fis = new FileInputStream(file);
              ObjectInputStream ois = new ObjectInputStream(fis)) {
             result = ois.readObject();
             fis.close();
-            ois.close();
+           // ois.close();
         }
         return (JournalClass) result;
     }
 
     // Get the newest file for a specific extension
     public File[] getFilesInOrder() {
-        File dir = new File("/data/data/com.a5work.mentalhealthapp/files/");
+        File dir = new File(Path);
         FileFilter fileFilter = new WildcardFileFilter("*" + ".gson");
         File[] files = dir.listFiles(fileFilter);
 
+        assert files != null;
         if (files.length > 0) {
             // The newest file comes first
             Arrays.sort(files, LastModifiedFileComparator.LASTMODIFIED_REVERSE);
